@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera Tutorial</title>
+  <style>
+    .demo {
+      transform: scaleX(-1);
+    }
+  </style>
+</head>
+<body>
+  <video class="demo" id="new-video" playsinline autoplay width="50%" height="40%" video></video>
+  <canvas id="new-canvas"></canvas>
+
+  <script>
+    const videoElement=document.getElementById('new-video');
+    const video=navigator.mediaDevices.getUserMedia({video: true}).then(stream=>
+    {
+      videoElement.srcObject=stream;
+    })
+    .catch(error=>{
+      console.log('Error in accessing the camera');
+    })
+  </script>
+</body>
+</html>
